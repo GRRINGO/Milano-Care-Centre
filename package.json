@@ -2,7 +2,7 @@
   "name": "polimi-hyp-2018-project",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git clone https://polimi-hyp-2018-10643774@bitbucket.org/polimihyp2018team10643774/polimi-hyp-2018-project.git",
+  "repository": "https://polimi-hyp-2018-10643774@bitbucket.org/polimihyp2018team10643774/polimi-hyp-2018-project.git",
   "author": "Noah Nettey",
   "engines": {
     "node": "7.5.0"
