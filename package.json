@@ -1,9 +1,9 @@
 {
-  "name": "polimi-hyp-2017-boilerplate",
+  "name": "polimi-hyp-2018-project",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2018-project.git",
-  "author": "Vittorio Zaccaria <vittorio.zaccaria@polimi.it>",
+  "repository": "git clone https://polimi-hyp-2018-10643774@bitbucket.org/polimihyp2018team10643774/polimi-hyp-2018-project.git",
+  "author": "Noah Nettey",
   "engines": {
     "node": "7.5.0"
   },
