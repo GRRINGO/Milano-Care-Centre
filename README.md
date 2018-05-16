@@ -1,16 +1,24 @@
 # README
 
-This repository will be updated during our hands on lectures with a
-small app to manage pets. We suggest to use it as a starting point
-(fork) for your project once we finished.
+This repository is for the Hypermedia Applications course project.
 
-## What is this repository for?
+This team is formed by:
 
-Once you fork this repo, you can completely modify it at your own will
-to write your project. You will find the instructions to deploy this
-repo directly to your heroku account below.
+-  **Noah Nettey** 10643774 _noahakai.nettey@mail.polimi.it_
+-  **Kristoffer Nesland** 00000000 _kristoffer.nesland@mail.polimi.it_
 
-## How do I get set up to test this locally?
+The design for the web page was done together in meetings, before we started to actually produce code.
+
+**Client-side languages used:** JavaScript, HTML, CSS
+
+**Tenplate used:** None
+
+## Notes
+Before this repository was made GitHub was used for version control.
+For that reason there are not too many commits on this repository.
+
+# Instructions
+### How do I get set up to test this locally?
 
 -   To run this server locally you should have Nodejs
     (v7.5.0) installed.
@@ -23,7 +31,7 @@ repo directly to your heroku account below.
 
         npm start
 
-## How do I deploy this to Heroku
+### How do I deploy this to Heroku
 
 *Do this only if you are the team administrator*.
 
