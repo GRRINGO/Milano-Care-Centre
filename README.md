@@ -28,7 +28,9 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 **Tenplate used:** No templates were used, but the site relies heavily on Bootstrap and its various components (navbar, cards and more).
 
-**External vendors:** Except from jQuery and Bootstrap, no external vendors were used.
+**External vendors:**
+
+- The embedded google maps, _https://developers.google.com/maps/documentation/embed/guide_
 
 ## Main problems faced during development
 
