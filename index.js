@@ -7,17 +7,17 @@ const process = require("process");
 let sqlDb;
 
 function initSqlDB() {
-  /* Locally we should launch the app with TEST=true to use SQLlite:
+  // Locally we should launch the app with TEST=true to use SQLlite:
 
-       > TEST=true node ./index.js
+  process.env.TEST=true// node ./index.js
 
-    */
+    
   if (process.env.TEST) {
     sqlDb = sqlDbFactory({
       client: "sqlite3",
       debug: true,
       connection: {
-        filename: "./petsdb.sqlite"
+        filename: "./carecenterdb.sqlite"
       },
       useNullAsDefault: true
     });
@@ -32,20 +32,26 @@ function initSqlDB() {
 }
 
 function initDb() {
-  return sqlDb.schema.hasTable("pets").then(exists => {
+  return sqlDb.schema.hasTable("persons").then(exists => {
     if (!exists) {
       sqlDb.schema
-        .createTable("pets", table => {
-          table.increments();
-          table.string("name");
-          table.integer("born").unsigned();
-          table.enum("tag", ["cat", "dog"]);
+        .createTable("persons", table => {
+          table.increments("id");
+          table.string("first_name");
+          table.string("last_name");
+          table.enum("gender", ["male", "female"]);
+          table.integer("age").unsigned();
+          table.string("nationality");
+          table.string("role");
+          table.string("phone_number");
+          table.string("email");
+          table.text("description");
         })
         .then(() => {
           return Promise.all(
-            _.map(petsList, p => {
+            _.map(personsList, p => {
               delete p.id;
-              return sqlDb("pets").insert(p);
+              return sqlDb("persons").insert(p);
             })
           );
         });
@@ -59,7 +65,7 @@ const _ = require("lodash");
 
 let serverPort = process.env.PORT || 5000;
 
-let petsList = require("./petstoredata.json");
+let personsList = require("./personsdata.json");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -67,11 +73,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // /* Register REST entry point */
-app.get("/pets", function(req, res) {
+app.get("/persons", function(req, res) {
   let start = parseInt(_.get(req, "query.start", 0));
   let limit = parseInt(_.get(req, "query.limit", 5));
   let sortby = _.get(req, "query.sort", "none");
-  let myQuery = sqlDb("pets");
+  let myQuery = sqlDb("persons");
 
   if (sortby === "age") {
     myQuery = myQuery.orderBy("born", "asc");
@@ -86,9 +92,9 @@ app.get("/pets", function(req, res) {
     });
 });
 
-app.delete("/pets/:id", function(req, res) {
+app.delete("/persons/:id", function(req, res) {
   let idn = parseInt(req.params.id);
-  sqlDb("pets")
+  sqlDb("persons")
     .where("id", idn)
     .del()
     .then(() => {
@@ -97,13 +103,13 @@ app.delete("/pets/:id", function(req, res) {
     });
 });
 
-app.post("/pets", function(req, res) {
+app.post("/persons", function(req, res) {
   let toappend = {
     name: req.body.name,
     tag: req.body.tag,
     born: req.body.born
   };
-  sqlDb("pets")
+  sqlDb("persons")
     .insert(toappend)
     .then(ids => {
       let id = ids[0];

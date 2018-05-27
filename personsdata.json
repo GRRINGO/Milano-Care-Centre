@@ -1,0 +1,74 @@
+[
+	{
+		"id": 0,
+		"first_name": "Giuseppe",
+		"last_name": "Rossi",
+		"gender": "male",
+		"age": 37,
+		"nationality": "italian",
+		"role": "doctor",
+		"phone_number": "+39 06 96746327",
+		"email": "gr@center.it",
+		"description": "Giuseppe graduated from university in 2008 and has been specializing in treating children and young adults ever since."
+	},
+	{
+		"id": 1,
+		"first_name": "Jasmine",
+		"last_name": "Paolini",
+		"gender": "female",
+		"age": 33,
+		"nationality": "italian",
+		"role": "teacher",
+		"phone_number": "+39 06 96746355",
+		"email": "jp@center.it",
+		"description": "Jasmine started working in a kindergarten. After two years of further education, she became an employee at the center. Today she teaches mathematics to the children here."
+	},
+	{
+		"id": 2,
+		"first_name": "Martina",
+		"last_name": "Caregaro",
+		"gender": "female",
+		"age": 43,
+		"nationality": "italian",
+		"role": "director",
+		"phone_number": "+39 06 99746357",
+		"email": "mc@center.it",
+		"description": "Martina is the director of the center. She has a bakground as 5 years of principal at an elementary school."
+	},
+	{
+		"id": 3,
+		"first_name": "Mattia",
+		"last_name": "De Sciglio",
+		"gender": "male",
+		"age": 32,
+		"nationality": "italian",
+		"role": "physiotherapist",
+		"phone_number": "+39 06 94773652",
+		"email": "mds@center.it",
+		"description": "Mattia is responsible for all physical activities at the center. He organizes workouts in the center's gym, but also treats indviduals, sets up training plans and follows up."
+	},
+	{
+		"id": 4,
+		"first_name": "Sandra",
+		"last_name": "Cecchini",
+		"gender": "female",
+		"age": 29,
+		"nationality": "italian",
+		"role": "teacher",
+		"phone_number": "+39 06 92397469",
+		"email": "sc@center.it",
+		"description": "Sandra is a teacher specialized in teaching children with learning disabilities. Her main subjects are language and history."
+	},
+	{
+		"id": 6,
+		"first_name": "Steve",
+		"last_name": "McManaman",
+		"gender": "male",
+		"age": 67,
+		"nationality": "british",
+		"role": "psychologist",
+		"phone_number": "+39 06 94783648",
+		"email": "sm@center.it",
+		"description": "Steve has over 40 years of experience within the field of psychology. He works together with the coordinators to make sure that the teaching provided at the center is as well suited as possible to the individual children. Steve also functions as a contact person for children wanting to talk with someone."
+	}
+]
