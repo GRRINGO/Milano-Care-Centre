@@ -44,7 +44,7 @@ function initDb() {
                 table.string("country");
                 table.string("city");
                 table.integer("postal_code").unsigned();
-                table.string("adress");
+                table.string("address");
                 table.string("mon_thu_open");
                 table.string("fri_open");
                 table.string("sat_sun_open");
@@ -104,6 +104,23 @@ app.get("/location_card_info", function(req, res) {
     */
 });
 
+app.get("/locations/:id", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/locations/location_page.html")
+});
+
+app.get("/info/locations/:id", function(req, res) {
+    if (req.get('internal')) {
+        let myQuery = sqlDb("locations");
+        myQuery.select(["*"]).where('id', req.params.id).then(result => {
+            res.send(result);
+        });
+    } else {
+        res.sendFile(__dirname + "/public/pages/locations/location_page.html")
+    }
+
+    console.log("Tutto bene");
+
+});
 /*
 
 For pets DB
