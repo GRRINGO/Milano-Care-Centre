@@ -65,7 +65,7 @@ const _ = require("lodash");
 
 let serverPort = process.env.PORT || 5000;
 
-let personsList = require("./personsdata.json");
+let personsList = require("./json/persondata.json");
 
 app.use(express.static(__dirname + "/public"));
 
