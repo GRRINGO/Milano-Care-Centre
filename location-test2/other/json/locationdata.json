@@ -12,7 +12,10 @@
         "mon_thu_open": "08:00 - 21:00",
         "fri_open": "08:00 - 20:00",
         "sat_sun_open": "10:00-19:00",
-        "events": "Museum tour/Italian evening"
+        "events": "Museum tour/Italian evening",
+        "service0": "Library",
+        "service1": "Speech Therapy",
+        "service2": "Psychotherapy"
     },
     {
         "id": 1,
@@ -27,7 +30,10 @@
         "mon_thu_open": "09:00 - 21:00",
         "fri_open": "09:00 - 20:00",
         "sat_sun_open": "09:00-19:00",
-        "events": "Soccer tournament/Cycling trip"
+        "events": "Soccer tournament/Cycling trip",
+        "service0": "Library",
+        "service1": "Speech Therapy",
+        "service2": "Psychotherapy"        
     },
     {
         "id": 2,
@@ -42,7 +48,10 @@
         "mon_thu_open": "09:00 - 20:00",
         "fri_open": "09:00 - 20:00",
         "sat_sun_open": "09:00-19:00",
-        "events": "Barbeque"
+        "events": "Barbeque",
+        "service0": "Swimming",
+        "service1": "Assistant Service",
+        "service2": "Education"        
     },
     {
         "id": 3,
@@ -57,7 +66,10 @@
         "mon_thu_open": "08:00 - 20:00",
         "fri_open": "08:30 - 20:00",
         "sat_sun_open": "09:00-19:00",
-        "events": "Movie night/Cooking course"
+        "events": "Movie night/Cooking course",
+        "service0": "Swimming",
+        "service1": "Education",
+        "service2": "NULL"        
     },
     {
         "id": 4,
@@ -72,7 +84,10 @@
         "mon_thu_open": "09:00 - 21:00",
         "fri_open": "09:00 - 21:00",
         "sat_sun_open": "10:00-20:00",
-        "events": "Football match/City Life tour/Market"
+        "events": "Football match/City Life tour/Market",
+        "service0": "Psychotherapy",
+        "service1": "Assistant Service",
+        "service2": "NULL"        
     },
     {
         "id": 5,
@@ -87,6 +102,9 @@
         "mon_thu_open": "09:00 - 18:00",
         "fri_open": "08:00 - 18:00",
         "sat_sun_open": "09:00-16:00",
-        "events": "Bergamo trip/Volleyball tournament"
+        "events": "Bergamo trip/Volleyball tournament",
+        "service0": "Swimming",
+        "service1": "Education",
+        "service2": "NULL"        
     }
 ]

@@ -32,7 +32,30 @@ function initSqlDB() {
 }
 
 function initDb() {
-    return sqlDb.schema.hasTable("locations").then(exists => {
+    sqlDb.schema.hasTable("services").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("services", table => {
+                table.increments();
+                table.string("name").unique();
+                table.string("desc");
+                table.string("img_url");
+                table.string("details");
+            })
+                .then(() => {
+                return Promise.all(
+                    _.map(servicesList, l => {
+                        delete l.id;
+                        return sqlDb("services").insert(l);
+                    })
+                );
+            });
+        } else {
+            return true;
+        }
+    });
+
+    sqlDb.schema.hasTable("locations").then(exists => {
         if (!exists) {
             sqlDb.schema
                 .createTable("locations", table => {
@@ -49,6 +72,10 @@ function initDb() {
                 table.string("fri_open");
                 table.string("sat_sun_open");
                 table.string("events");
+                table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                table.string("service2").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+
             })
                 .then(() => {
                 return Promise.all(
@@ -69,6 +96,7 @@ const _ = require("lodash");
 let serverPort = process.env.PORT || 5000;
 
 let locationsList = require("./other/json/locationdata.json");
+let servicesList = require("./other/json/servicedata.json");
 
 app.use(express.static(__dirname + "/public"));
 

@@ -1,13 +1,5 @@
-	
-
-
-
 
 function loadMainContent() {
-	let myHeaders = new Headers({
-    'internal': 'true'
-	});
-
 	let curr_path = window.location.pathname;
 
     fetch("/info" + curr_path, {
@@ -37,11 +29,47 @@ function loadMainContent() {
             $("#mon_thu").replaceWith(`<td id="mon_thu">`+data[0].mon_thu_open+`</td>`);
             $("#fri").replaceWith(`<td id="fri">`+data[0].fri_open+`</td>`);
             $("#sat_sun").replaceWith(`<td id="sat_sun">`+data[0].sat_sun_open+`</td>`);
+            
+            text = `<ul id="services_provided" class="list-group">`;
+        	if (data[0].service0 != "NULL"){
+        		text = text +  `<a href = "../services/service_1.html"><li class="list-group-item list-group-item-action">`+data[0].service0+`</li></a>`;
+        	};
+        	if (data[0].service1 != "NULL"){
+        		text = text +  `<a href = "../services/service_2.html"><li class="list-group-item list-group-item-action">`+data[0].service1+`</li></a>`;
+        	};
+        	if (data[0].service2 != "NULL"){
+        		text = text +  `<a href = "../services/service_3.html"><li class="list-group-item list-group-item-action">`+data[0].service2+`</li></a>`;
+        	};
+            text = text + `</ul>`;
+            $("#services_provided").replaceWith(text);
     });
+}
+
+function loadLocationLinks() {
+	let curr_path = window.location.pathname;
+	fetch("/location_card_info")
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			text = `<div id="locations_links_list" class="list-group">`
+            for (let i = 0; i < data.length; i++) {
+            	if (curr_path == (`/locations/`+(i+1))){
+            		text = text + `<a href="/locations/`+ (i+1) + `" class="list-group-item list-group-item-action active">` + data[i].name + `</a>`;
+            	} else {
+            		text = text + `<a href="/locations/`+ (i+1) + `" class="list-group-item list-group-item-action">` + data[i].name + `</a>`;
+            	}
+            };
+            text = text + `</div>`;
+
+            $("#locations_links_list").replaceWith(text);
+		})
+
 }
 
 function startup() {
     loadMainContent();
+    loadLocationLinks();
 }
 
 $(document).ready(function() {
