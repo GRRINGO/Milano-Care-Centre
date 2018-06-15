@@ -1,5 +1,5 @@
 function generateCards() {
-    fetch('/location_card_info')
+    fetch('/person_card_info')
         .then(function(response) {
         return response.json();
     })
@@ -8,7 +8,7 @@ function generateCards() {
         let rows = Math.ceil(data.length/cols);
         let k = 0;
         let text = "";
-        
+        let name = "";
         for (let i = 0; i < rows; i++) {
             
             text = "";
@@ -16,12 +16,13 @@ function generateCards() {
             
             for (let j = 0; j < cols; j++) {
                 k = i*cols + j;
-                
+                name = data[k].first_name + " " + data[k].last_name;
+
                 text = text + '<div class="card" id = "card">';
-                text = text + '<a href="locations/' + (i+1) + '"><img class="card-img-top" id = "img_url" src="';
+                text = text + '<a href="persons/' + (i+1) + '"><img class="card-img-top" id = "img_url" src="';
                 text = text + '../assets/img/' + data[k].img_url + '" alt="Card image cap"></a>';
                 text = text + '<div class="card-body">';
-                text = text + '<a href="locations/' + (i+1) + '"><h5 class="card-title" id = "name">' + data[k].name + '</h5></a>';
+                text = text + '<a href="persons/' + (i+1) + '"><h5 class="card-title" id = "name">' + name + '</h5></a>';
                 text = text + '<p class="card-text" id = "desc">' + data[k].desc + '</p>';
                 text = text + '</div>';
                 text = text + '</div>';

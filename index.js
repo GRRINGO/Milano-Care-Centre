@@ -45,7 +45,7 @@ function initDb() {
                     table.string("role");
                     table.string("phone_number");
                     table.string("email");
-                    table.text("description");
+                    table.text("desc");
                     table.string("img_url");
                 })
                 .then(() => {
@@ -180,6 +180,18 @@ app.get("/info/locations/:id", function(req, res) {
 
 });
 
+app.get("/persons", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/person_index.html");
+});
+
+app.get("/person_card_info", function(req, res) {
+    let myQuery = sqlDb("persons");
+
+    myQuery.select(["first_name", "last_name", "desc", "img_url"]).then(result => {
+        res.send(result);
+    });
+    console.log("Tutto bene");
+});
 
 // app.use(function(req, res) {
 //   res.status(400);
