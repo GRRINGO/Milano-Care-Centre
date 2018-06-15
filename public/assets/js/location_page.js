@@ -1,6 +1,11 @@
 
 function loadMainContent() {
 	let curr_path = window.location.pathname;
+    console.log(curr_path);
+    let splitted = curr_path.split("/");
+    console.log(splitted[1]);
+
+
 
     fetch("/info" + curr_path, {
     	headers: new Headers({
