@@ -214,6 +214,15 @@ app.get("/info/persons/:id", function(req, res) {
 
 });
 
+
+app.get("/who_we_are", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/who_we_are.html")
+});
+
+app.get("/contact_us", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/contact_us.html")
+});
+
 // app.use(function(req, res) {
 //   res.status(400);
 //   res.send({ error: "400", title: "404: File Not Found" });

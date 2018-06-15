@@ -10,11 +10,13 @@ function selectActive() {
         $("#home_page").addClass("active");
         return;
     }  
-    
+
     let selector_ = "a[href*=" + actual_location+"]";
     console.log(splitted);
     $(selector_).addClass("active");
-    if (actual_location == "locations" || actual_location == "locations" || actual_location == "locations") {
+    if (actual_location == "locations" || actual_location == "locations" ||
+    actual_location == "locations" || actual_location == "who_we_are" ||
+    actual_location == "events") {
         console.log("true")
         $("#navbarDropdown").addClass("active");
     }
@@ -56,7 +58,7 @@ function loadNavbar() {
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Help us</a>
+                            <a class="nav-link" href="/help_us">Help us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/faq">FAQ</a>
