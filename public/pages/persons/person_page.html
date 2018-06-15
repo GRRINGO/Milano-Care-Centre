@@ -26,7 +26,7 @@
             <div class="container">
                 <div class = "row">
                     <div class = "col-lg-8 col-12">
-                        <h1 class="display-4">Giuseppe Rossi</h1>
+                        <h1 class="display-4" id="title1_person"></h1>
                     </div>
                     <div class = "col-lg-4 col-12">
                         <!-- Breadcrumbs -->
@@ -34,7 +34,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="../person_index.html">Persons</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Giuseppe Rossi</li>
+                                    <li class="breadcrumb-item active" aria-current="page" id="title2_person"></li>
                                 </ol>
                             </nav>
                         </div>
@@ -103,8 +103,8 @@
         <div class = "backdrop-dark">
             <div class = "container">
                 <div class = "row">
-                    <div class = "col-md-4 col-12">
-                        <img src="../../assets/img/persons/person_1.jpg" class="img-fluid rounded person-img" alt="Responsive image">
+                    <div class = "col-md-4 col-12" id="img_path_person">
+                    
                     </div>
                     <div class = "col-md-8 col-12">
                         <p class = "title-text">Basic info</p>
@@ -112,27 +112,27 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Gender</th>
-                                    <td>Male</td>
+                                    <td id="gender"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Age</th>
-                                    <td>37</td>
+                                    <td id="age"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nationality</th>
-                                    <td>Italian</td>
+                                    <td id="nationality"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Role</th>
-                                    <td>Doctor</td>
+                                    <td id="occupation"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Phone number</th>
-                                    <td>+39 06 96746372</td>
+                                    <td id="phone_number"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">E-mail</th>
-                                    <td>gr@center.it</td>
+                                    <td id="email_address"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -145,15 +145,12 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "col-md-8 col-12">
-                        <p class = "title-text">About Giuseppe</p>
-                        <p class = "text-text">
-                            Giuseppe graduated from university in 2008 and has been 
-                            specializing in treating children and young adults ever since.
-                        </p>
+                        <p class = "title-text" id="about_person"></p>
+                        <p class = "text-text"></p>
                     </div>
                     <div class = "col-md-4 col-12">
                         <p class = "title-text">Is providing</p>
-                        <p class = "text-text">No associated services</p>
+                        <p class = "text-text" id="provides_services"></p>
                     </div>
                 </div>
             </div>

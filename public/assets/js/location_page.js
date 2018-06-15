@@ -30,6 +30,10 @@ function loadMainContent() {
             $("#fri").replaceWith(`<td id="fri">`+data[0].fri_open+`</td>`);
             $("#sat_sun").replaceWith(`<td id="sat_sun">`+data[0].sat_sun_open+`</td>`);
             
+
+            //Creaeting the services links list porb should be done in seperate
+            //function which makes a query with the assosiated services names to
+            //obtain the address/id. Not sure because services is not yet implemented.
             text = `<ul id="services_provided" class="list-group">`;
         	if (data[0].service0 != "NULL"){
         		text = text +  `<a href = "../services/service_1.html"><li class="list-group-item list-group-item-action">`+data[0].service0+`</li></a>`;
@@ -42,7 +46,7 @@ function loadMainContent() {
         	};
             text = text + `</ul>`;
             $("#services_provided").replaceWith(text);
-    });
+        });
 }
 
 function loadLocationLinks() {

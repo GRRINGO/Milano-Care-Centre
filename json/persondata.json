@@ -10,7 +10,9 @@
 		"phone_number": "+39 06 96746327",
 		"email": "gr@center.it",
 		"desc": "Giuseppe graduated from university in 2008 and has been specializing in treating children and young adults ever since.",
-        "img_url": "persons/person_0.jpg"
+        "img_url": "persons/person_0.jpg",
+        "service0": "NULL",
+        "service1": "NULL"
 	},
 	{
 		"id": 1,
@@ -23,7 +25,9 @@
 		"phone_number": "+39 06 96746355",
 		"email": "jp@center.it",
 		"desc": "Jasmine started working in a kindergarten. After two years of further education, she became an employee at the center. Today she teaches mathematics to the children here.",
-        "img_url": "persons/person_1.jpg"
+        "img_url": "persons/person_1.jpg",
+        "service0": "Library",
+        "service1": "Education"
 	},
 	{
 		"id": 2,
@@ -36,7 +40,9 @@
 		"phone_number": "+39 06 99746357",
 		"email": "mc@center.it",
 		"desc": "Martina is the director of the center. She has a bakground as 5 years of principal at an elementary school.",
-        "img_url": "persons/person_2.jpg"
+        "img_url": "persons/person_2.jpg",
+        "service0": "NULL",
+        "service1": "NULL"
 	},
 	{
 		"id": 3,
@@ -49,7 +55,9 @@
 		"phone_number": "+39 06 94773652",
 		"email": "mds@center.it",
 		"desc": "Mattia is responsible for all physical activities at the center. He organizes workouts in the center's gym, but also treats indviduals, sets up training plans and follows up.",
-        "img_url": "persons/person_3.jpg"
+        "img_url": "persons/person_3.jpg",
+        "service0": "Swimming",
+        "service1": "NULL"
 	},
 	{
 		"id": 4,
@@ -62,7 +70,9 @@
 		"phone_number": "+39 06 92397469",
 		"email": "sc@center.it",
 		"desc": "Sandra is a teacher specialized in teaching children with learning disabilities. Her main subjects are language and history.",
-        "img_url": "persons/person_4.jpg"
+        "img_url": "persons/person_4.jpg",
+        "service0": "Library",
+        "service1": "Education"
 	},
 	{
 		"id": 5,
@@ -75,6 +85,8 @@
 		"phone_number": "+39 06 94783648",
 		"email": "sm@center.it",
 		"desc": "Steve has over 40 years of experience within the field of psychology. He works together with the coordinators to make sure that the teaching provided at the center is as well suited as possible to the individual children. Steve also functions as a contact person for children wanting to talk with someone.",
-        "img_url": "persons/person_5.jpg"
+        "img_url": "persons/person_5.jpg",
+        "service0": "Speech Therapy",
+        "service1": "Psychotherapy"
 	}
 ]

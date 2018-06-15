@@ -31,6 +31,7 @@ function initSqlDB() {
     }
 }
 
+//Services not done with arrays since sqlite3 doesn't support them.
 function initDb() {
     sqlDb.schema.hasTable("persons").then(exists => {
         if (!exists) {
@@ -47,6 +48,8 @@ function initDb() {
                     table.string("email");
                     table.text("desc");
                     table.string("img_url");
+                    table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                    table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
                 })
                 .then(() => {
                     return Promise.all(
@@ -173,7 +176,7 @@ app.get("/info/locations/:id", function(req, res) {
             res.send(result);
         });
     } else {
-        res.sendFile(__dirname + "/public/pages/locations/location_page.html")
+        res.sendFile(__dirname + "/public/pages/location_page.html")
     }
 
     console.log("Tutto bene");
@@ -191,6 +194,24 @@ app.get("/person_card_info", function(req, res) {
         res.send(result);
     });
     console.log("Tutto bene");
+});
+
+app.get("/persons/:id", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/person_page.html")
+});
+
+app.get("/info/persons/:id", function(req, res) {
+    if (req.get('internal')) {
+        let myQuery = sqlDb("persons");
+        myQuery.select(["*"]).where('id', req.params.id).then(result => {
+            res.send(result);
+        });
+    } else {
+        res.sendFile(__dirname + "/public/pages/person_page.html")
+    }
+
+    console.log("Tutto bene");
+
 });
 
 // app.use(function(req, res) {

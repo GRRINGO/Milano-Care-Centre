@@ -26,7 +26,7 @@
             <div class="container">
                 <div class = "row">
                     <div class = "col-lg-8 col-12">
-                        <h1 class="display-4">Mattia De Sciglio</h1>
+                        <h1 class="display-4" id="title1_person"></h1>
                     </div>
                     <div class = "col-lg-4 col-12">
                         <!-- Breadcrumbs -->
@@ -34,7 +34,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="../person_index.html">Persons</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Mattia De Sciglio</li>
+                                    <li class="breadcrumb-item active" aria-current="page" id="title2_person"></li>
                                 </ol>
                             </nav>
                         </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-
+        
 
         <!-- Navbar -->
 
@@ -58,7 +58,7 @@
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button>.
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
@@ -103,8 +103,8 @@
         <div class = "backdrop-dark">
             <div class = "container">
                 <div class = "row">
-                    <div class = "col-md-4 col-12">
-                        <img src="../../assets/img/persons/person_4.jpg" class="img-fluid rounded person-img" alt="Responsive image">
+                    <div class = "col-md-4 col-12" id="img_path_person">
+                    
                     </div>
                     <div class = "col-md-8 col-12">
                         <p class = "title-text">Basic info</p>
@@ -112,27 +112,27 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Gender</th>
-                                    <td>Male</td>
+                                    <td id="gender"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Age</th>
-                                    <td>32</td>
+                                    <td id="age"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nationality</th>
-                                    <td>Italian</td>
+                                    <td id="nationality"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Role</th>
-                                    <td>Physiotherapist</td>
+                                    <td id="occupation"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Phone number</th>
-                                    <td>+39 06 94773652</td>
+                                    <td id="phone_number"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">E-mail</th>
-                                    <td>mds@center.it</td>
+                                    <td id="email_address"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -145,18 +145,12 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "col-md-8 col-12">
-                        <p class = "title-text">About Mattia</p>
-                        <p class = "text-text">
-                            Mattia is responsible for all physical activities at the 
-                            center. He organizes workouts in the center's gym, but 
-                            also treats indviduals, sets up training plans and follows up.
-                        </p>
+                        <p class = "title-text" id="about_person"></p>
+                        <p class = "text-text"></p>
                     </div>
                     <div class = "col-md-4 col-12">
                         <p class = "title-text">Is providing</p>
-                        <ul class="list-group" id="provides_services">
-                            <a href = "../services/service_2.html"><li class="list-group-item list-group-item-action">Swimming</li></a>
-                        </ul>
+                        <p class = "text-text" id="provides_services"></p>
                     </div>
                 </div>
             </div>
@@ -173,5 +167,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
                 integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
                 crossorigin="anonymous"></script>
+        <!-- AJAX -->
+        <script src = "../assets/js/person_page.js"></script> 
     </body>
 </html>

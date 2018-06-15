@@ -8,7 +8,7 @@ function generateCards() {
         let rows = Math.ceil(data.length/cols);
         let k = 0;
         let text = "";
-        
+
         for (let i = 0; i < rows; i++) {
             
             text = "";
@@ -18,10 +18,10 @@ function generateCards() {
                 k = i*cols + j;
                 
                 text = text + '<div class="card" id = "card">';
-                text = text + '<a href="locations/' + (i+1) + '"><img class="card-img-top" id = "img_url" src="';
+                text = text + '<a href="locations/' + (k+1) + '"><img class="card-img-top" id = "img_url" src="';
                 text = text + '../assets/img/' + data[k].img_url + '" alt="Card image cap"></a>';
                 text = text + '<div class="card-body">';
-                text = text + '<a href="locations/' + (i+1) + '"><h5 class="card-title" id = "name">' + data[k].name + '</h5></a>';
+                text = text + '<a href="locations/' + (k+1) + '"><h5 class="card-title" id = "name">' + data[k].name + '</h5></a>';
                 text = text + '<p class="card-text" id = "desc">' + data[k].desc + '</p>';
                 text = text + '</div>';
                 text = text + '</div>';
