@@ -7,58 +7,117 @@ const process = require("process");
 let sqlDb;
 
 function initSqlDB() {
-  // Locally we should launch the app with TEST=true to use SQLlite:
+    // Locally we should launch the app with TEST=true to use SQLlite:
 
-  process.env.TEST=true// node ./index.js
+    process.env.TEST=true// node ./index.js
 
-    
-  if (process.env.TEST) {
-    sqlDb = sqlDbFactory({
-      client: "sqlite3",
-      debug: true,
-      connection: {
-        filename: "./carecenterdb.sqlite"
-      },
-      useNullAsDefault: true
-    });
-  } else {
-    sqlDb = sqlDbFactory({
-      debug: true,
-      client: "pg",
-      connection: process.env.DATABASE_URL,
-      ssl: true
-    });
-  }
+        
+    if (process.env.TEST) {
+        sqlDb = sqlDbFactory({
+            client: "sqlite3",
+            debug: true,
+            connection: {
+                filename: "./carecenterdb.sqlite"
+            },
+            useNullAsDefault: true
+        });
+    } else {
+        sqlDb = sqlDbFactory({
+            debug: true,
+            client: "pg",
+            connection: process.env.DATABASE_URL,
+            ssl: true
+        });
+    }
 }
 
 function initDb() {
-  return sqlDb.schema.hasTable("persons").then(exists => {
-    if (!exists) {
-      sqlDb.schema
-        .createTable("persons", table => {
-          table.increments("id");
-          table.string("first_name");
-          table.string("last_name");
-          table.enum("gender", ["male", "female"]);
-          table.integer("age").unsigned();
-          table.string("nationality");
-          table.string("role");
-          table.string("phone_number");
-          table.string("email");
-          table.text("description");
-        })
-        .then(() => {
-          return Promise.all(
-            _.map(personsList, p => {
-              delete p.id;
-              return sqlDb("persons").insert(p);
+    sqlDb.schema.hasTable("persons").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("persons", table => {
+                    table.increments("id");
+                    table.string("first_name");
+                    table.string("last_name");
+                    table.enum("gender", ["male", "female"]);
+                    table.integer("age").unsigned();
+                    table.string("nationality");
+                    table.string("role");
+                    table.string("phone_number");
+                    table.string("email");
+                    table.text("description");
+                    table.string("img_url");
+                })
+                .then(() => {
+                    return Promise.all(
+                        _.map(personsList, p => {
+                            delete p.id;
+                            return sqlDb("persons").insert(p);
+                        })
+                    );
+                });
+        } else {
+            return true;
+        }
+    });
+
+    sqlDb.schema.hasTable("services").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("services", table => {
+                table.increments();
+                table.string("name").unique();
+                table.string("desc");
+                table.string("img_url");
+                table.string("details");
             })
-          );
-        });
-    } else {
-      return true;
-    }
-  });
+                .then(() => {
+                return Promise.all(
+                    _.map(servicesList, l => {
+                        delete l.id;
+                        return sqlDb("services").insert(l);
+                    })
+                );
+            });
+        } else {
+            return true;
+        }
+    });
+
+    sqlDb.schema.hasTable("locations").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("locations", table => {
+                table.increments();
+                table.string("name");
+                table.string("desc");
+                table.string("img_url");
+                table.string("map_code");
+                table.string("country");
+                table.string("city");
+                table.integer("postal_code").unsigned();
+                table.string("address");
+                table.string("mon_thu_open");
+                table.string("fri_open");
+                table.string("sat_sun_open");
+                table.string("events");
+                table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                table.string("service2").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+
+            })
+                .then(() => {
+                return Promise.all(
+                    _.map(locationsList, l => {
+                        delete l.id;
+                        return sqlDb("locations").insert(l);
+                    })
+                );
+            });
+        } else {
+            return true;
+        }
+    });
 }
 
 const _ = require("lodash");
@@ -66,6 +125,8 @@ const _ = require("lodash");
 let serverPort = process.env.PORT || 5000;
 
 let personsList = require("./json/persondata.json");
+let locationsList = require("./json/locationdata.json");
+let servicesList = require("./json/servicedata.json");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -73,49 +134,52 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // /* Register REST entry point */
-app.get("/persons", function(req, res) {
-  let start = parseInt(_.get(req, "query.start", 0));
-  let limit = parseInt(_.get(req, "query.limit", 5));
-  let sortby = _.get(req, "query.sort", "none");
-  let myQuery = sqlDb("persons");
 
-  if (sortby === "age") {
-    myQuery = myQuery.orderBy("born", "asc");
-  } else if (sortby === "-age") {
-    myQuery = myQuery.orderBy("born", "desc");
-  }
-  myQuery
-    .limit(limit)
-    .offset(start)
-    .then(result => {
-      res.send(JSON.stringify(result));
-    });
+app.get("/locations", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/location_index.html");
 });
 
-app.delete("/persons/:id", function(req, res) {
-  let idn = parseInt(req.params.id);
-  sqlDb("persons")
-    .where("id", idn)
-    .del()
-    .then(() => {
-      res.status(200);
-      res.send({ message: "ok" });
+app.get("/location_card_info", function(req, res) {
+    let myQuery = sqlDb("locations");
+
+    myQuery.select(["name", "desc", "img_url"]).then(result => {
+        res.send(result);
     });
+
+    console.log("Tutto bene");
+
+
+    /*
+    let sql = 'SELECT name, desc, img_url FROM locations';
+    sqlDb.all(sql, [], (err, rows) => {
+        if (err) {
+            console.log("Error occured");
+        }
+        else {
+            console.log(rows[2].name);
+        }
+    });
+    */
 });
 
-app.post("/persons", function(req, res) {
-  let toappend = {
-    name: req.body.name,
-    tag: req.body.tag,
-    born: req.body.born
-  };
-  sqlDb("persons")
-    .insert(toappend)
-    .then(ids => {
-      let id = ids[0];
-      res.send(_.merge({ id, toappend }));
-    });
+app.get("/locations/:id", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/location_page.html")
 });
+
+app.get("/info/locations/:id", function(req, res) {
+    if (req.get('internal')) {
+        let myQuery = sqlDb("locations");
+        myQuery.select(["*"]).where('id', req.params.id).then(result => {
+            res.send(result);
+        });
+    } else {
+        res.sendFile(__dirname + "/public/pages/locations/location_page.html")
+    }
+
+    console.log("Tutto bene");
+
+});
+
 
 // app.use(function(req, res) {
 //   res.status(400);
@@ -129,5 +193,5 @@ initDb();
 
 /* Start the server on port 3000 */
 app.listen(serverPort, function() {
-  console.log(`Your app is ready at port ${serverPort}`);
+    console.log(`Your app is ready at port ${serverPort}`);
 });
