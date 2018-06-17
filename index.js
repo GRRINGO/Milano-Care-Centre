@@ -136,6 +136,10 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
+
+
 // /* Register REST entry point */
 
 // --- LOCATIONS ---
@@ -165,6 +169,15 @@ app.get("/location_card_info", function(req, res) {
         }
     });
     */
+});
+
+app.get("/location_names", function(req, res) {
+    let myQuery = sqlDb("locations");
+
+    myQuery.select(["name"]).then(result => {
+        res.send(result);
+    });
+    console.log("Tutto bene");
 });
 
 app.get("/locations/:id", function(req, res) {
@@ -218,6 +231,48 @@ app.get("/info/persons/:id", function(req, res) {
 
 });
 
+// --- Services ---
+
+app.get("/services", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/service_index.html");
+});
+
+app.get("/service_card_info", function(req, res) {
+    let myQuery = sqlDb("services");
+
+    myQuery.select(["name", "desc", "img_url"]).then(result => {
+        res.send(result);
+    });
+    console.log("Tutto bene");
+});
+
+app.get("/service_names", function(req, res) {
+    let myQuery = sqlDb("services");
+
+    myQuery.select(["name"]).then(result => {
+        res.send(result);
+    });
+    console.log("Tutto bene");
+});
+
+app.get("/services/:id", function(req, res) {
+    res.sendFile(__dirname + "/public/pages/service_page.html")
+});
+
+app.get("/info/services/:id", function(req, res) {
+    if (req.get('internal')) {
+        let myQuery = sqlDb("services");
+        myQuery.select(["name", "desc", "details"]).where('id', req.params.id).then(result => {
+            res.send(result);
+        });
+    } else {
+        res.sendFile(__dirname + "/public/pages/service_page.html")
+    }
+
+    console.log("Tutto bene");
+
+});
+
 // --- OTHER ---
 
 
@@ -233,6 +288,11 @@ app.get("/contact_us", function(req, res) {
 //   res.status(400);
 //   res.send({ error: "400", title: "404: File Not Found" });
 // });
+
+
+
+
+
 
 app.set("port", serverPort);
 
