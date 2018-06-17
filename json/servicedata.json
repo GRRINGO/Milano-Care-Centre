@@ -3,42 +3,42 @@
         "id": 0,
         "name": "Library",
         "desc": "The library lends out books for children and young adults, as well as special pedagogical literature for kindergartens, schools and parents. By offering a great variety of easy to read books, picture books and textbooks there is something for everyone at the library.",
-        "img_url": "locations/location_0.jpg",
+        "img_url": "services/service_0.jpg",
         "details": "Genres/Comics/Historical/Scientific"
     },
     {
         "id": 1,
         "name": "Swimming",
         "desc": "Swimming is a good form of exercising for people having trouble moving. We offer both indvidual exercising and group hours.",
-        "img_url": "locations/location_1.jpg",
+        "img_url": "services/service_1.jpg",
         "details": "Good to know/No prerequisities required/Temperature of 24 degrees in the pools"
     },
     {
         "id": 2,
         "name": "Speech Therapy",
         "desc": "Children and young adults can get help with adjusting theirs speech sound articulation to meet the expected normal pronunciation. Also people having problems with stuttering can get help to speak more fluently.",
-        "img_url": "locations/location_2.jpg",
+        "img_url": "services/service_2.jpg",
         "details": "Components of speech production/Phonation/Resonance/Fluency/Inotation/Pitch/Voice"
     },
     {
         "id": 3,
         "name": "Psychotherapy",
         "desc": "Treatment of children with mental disorders differs from that of treating older people. At the center we have the specific knowledge required to carefully treat children and young adults.",
-        "img_url": "locations/location_3.jpg",
+        "img_url": "services/service_3.jpg",
         "details": "Psychological disorders we treat/Neurodevelopental/Bipolar/Anxiety/Trauma/Dissociative"
     },
     {
         "id": 4,
         "name": "Assistant Service",
         "desc": "Our assistants can help in school and ease the workload of the family in the spare time. By utilizing an assistant, some children that would have needed to go to a specially adapted school can attend a normal school on the same level as other children.",
-        "img_url": "locations/location_4.jpg",
+        "img_url": "services/service_4.jpg",
         "details": "Activities/Cinema/Sports events/Video games"
     },
     {
         "id": 5,
         "name": "Education",
         "desc": "Children and young adults that are not able to attend normal schools can utilize our services. Our teachers all have education and experience in teaching children that have problems learning in the conventional school system.",
-        "img_url": "locations/location_5.jpg",
+        "img_url": "services/service_5.jpg",
         "details": "We teach children with/Blindness/Hearing loss/Learning disorders/Other disabilities"
     }   
 ]

@@ -11,7 +11,7 @@ function initSqlDB() {
 
     process.env.TEST=true// node ./index.js
 
-        
+
     if (process.env.TEST) {
         sqlDb = sqlDbFactory({
             client: "sqlite3",
@@ -37,28 +37,28 @@ function initDb() {
         if (!exists) {
             sqlDb.schema
                 .createTable("persons", table => {
-                    table.increments("id");
-                    table.string("first_name");
-                    table.string("last_name");
-                    table.enum("gender", ["male", "female"]);
-                    table.integer("age").unsigned();
-                    table.string("nationality");
-                    table.string("role");
-                    table.string("phone_number");
-                    table.string("email");
-                    table.text("desc");
-                    table.string("img_url");
-                    table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
-                    table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
-                })
+                table.increments("id");
+                table.string("first_name");
+                table.string("last_name");
+                table.enum("gender", ["male", "female"]);
+                table.integer("age").unsigned();
+                table.string("nationality");
+                table.string("role");
+                table.string("phone_number");
+                table.string("email");
+                table.text("desc");
+                table.string("img_url");
+                table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+                table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
+            })
                 .then(() => {
-                    return Promise.all(
-                        _.map(personsList, p => {
-                            delete p.id;
-                            return sqlDb("persons").insert(p);
-                        })
-                    );
-                });
+                return Promise.all(
+                    _.map(personsList, p => {
+                        delete p.id;
+                        return sqlDb("persons").insert(p);
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -68,7 +68,7 @@ function initDb() {
         if (!exists) {
             sqlDb.schema
                 .createTable("services", table => {
-                table.increments();
+                table.increments("id");
                 table.string("name").unique();
                 table.string("desc");
                 table.string("img_url");
@@ -76,9 +76,9 @@ function initDb() {
             })
                 .then(() => {
                 return Promise.all(
-                    _.map(servicesList, l => {
-                        delete l.id;
-                        return sqlDb("services").insert(l);
+                    _.map(servicesList, s => {
+                        delete s.id;
+                        return sqlDb("services").insert(s);
                     })
                 );
             });
@@ -91,7 +91,7 @@ function initDb() {
         if (!exists) {
             sqlDb.schema
                 .createTable("locations", table => {
-                table.increments();
+                table.increments("id");
                 table.string("name");
                 table.string("desc");
                 table.string("img_url");
@@ -121,6 +121,27 @@ function initDb() {
             return true;
         }
     });
+    
+    sqlDb.schema.hasTable("locationservice").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("locationservice", table => {
+                table.increments("id");
+                table.integer("service_id").unsigned();
+                table.integer("location_id").unsigned();
+            })
+                .then(() => {
+                return Promise.all(
+                    _.map(locationserviceList, ls => {
+                        delete ls.id;
+                        return sqlDb("locationservice").insert(ls);
+                    })
+                );
+            });
+        } else {
+            return true;
+        }
+    });
 }
 
 const _ = require("lodash");
@@ -130,6 +151,7 @@ let serverPort = process.env.PORT || 5000;
 let personsList = require("./json/persondata.json");
 let locationsList = require("./json/locationdata.json");
 let servicesList = require("./json/servicedata.json");
+let locationserviceList = require("./json/locationservicedata.json");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -231,7 +253,7 @@ app.get("/info/persons/:id", function(req, res) {
 
 });
 
-// --- Services ---
+// --- SERVICES ---
 
 app.get("/services", function(req, res) {
     res.sendFile(__dirname + "/public/pages/service_index.html");
@@ -249,7 +271,7 @@ app.get("/service_card_info", function(req, res) {
 app.get("/service_names", function(req, res) {
     let myQuery = sqlDb("services");
 
-    myQuery.select(["name"]).then(result => {
+    myQuery.select(["name", "desc"]).then(result => { // For some reason the result is ordered alphabetically if just the name is selected
         res.send(result);
     });
     console.log("Tutto bene");
@@ -282,6 +304,15 @@ app.get("/who_we_are", function(req, res) {
 
 app.get("/contact_us", function(req, res) {
     res.sendFile(__dirname + "/public/pages/contact_us.html")
+});
+
+app.get("/location_service_coupling", function(req, res) {
+    let myQuery = sqlDb("locationservice");
+
+    myQuery.select(["service_id", "location_id"]).then(result => {
+        res.send(result);
+    });
+    console.log("Tutto bene");
 });
 
 // app.use(function(req, res) {

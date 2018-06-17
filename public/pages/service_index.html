@@ -45,98 +45,20 @@
         <div class = "container service-filtering">
             <div class = "row">
                 <div class = "col-12">
-                    <div class="btn-group" role="group" aria-label="Button group">
-                        <button type="button" class="btn btn-secondary" id = "btnloc0">Show all</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc1">Duomo</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc2">Linate</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc3">Bovisa</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc4">Leonardo</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc5">San Siro</button>
-                        <button type="button" class="btn btn-secondary" id = "btnloc6">Abiategrasso</button>
+                    <div class="btn-group" role="group" aria-label="Button group" id = "filter-buttons">
+                        <button type="button" class="filter-btn btn btn-secondary" id = "btnloc-0">Show all</button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
         
         <!-- Service cards -->
-        
-        <div class = "container services-container">
-            <div class="card-deck">
-                <div class="card" id = "card1">
-                    <a href="services/service_1.html"><img class="card-img-top" src="../assets/img/services/service_1.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_1.html"><h5 class="card-title">Library</h5></a>
-                        <p class="card-text">The library lends out books for children 
-                                             and young adults, as well as special pedagogical 
-                                             literature for kindergartens, schools and parents.</p>
-                    </div>
-                </div>
-                <div class="card" id = "card2">
-                    <a href="services/service_2.html"><img class="card-img-top" src="../assets/img/services/service_2.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_2.html"><h5 class="card-title">Swimming</h5></a>
-                        <p class="card-text">Swimming is a good form of exercising for 
-                                             people having trouble moving. We offer both 
-                                             indvidual exercising and group hours.</p>
-                    </div>
-                </div>
-                <div class="card" id = "card3">
-                    <a href="services/service_3.html"><img class="card-img-top" src="../assets/img/services/service_3.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_3.html"><h5 class="card-title">Speech Therapy</h5></a>
-                        <p class="card-text">Children and young adults can get help 
-                                             with adjusting theirs speech sound 
-                                             articulation to meet the expected normal 
-                                             pronunciation. Also people having problems 
-                                             with stuttering can get help to speak more 
-                                             fluently.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-deck">
-                <div class="card" id = "card4">
-                    <a href="services/service_4.html"><img class="card-img-top" src="../assets/img/services/service_4.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_4.html"><h5 class="card-title">Psychotherapy</h5></a>
-                        <p class="card-text">Treatment of children with mental 
-                                             disorders differs from that of 
-                                             treating older people. At the center 
-                                             we have the specific knowledge required 
-                                             to carefully treat children and young 
-                                             adults.</p>
-                    </div>
-                </div>
-                <div class="card" id = "card5">
-                    <a href="services/service_5.html"><img class="card-img-top" src="../assets/img/services/service_5.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_5.html"><h5 class="card-title">Assistant Service</h5></a>
-                        <p class="card-text">Our assistants can help in school and 
-                                             ease the workload of the family in the 
-                                             spare time. By utilizing an assistant, 
-                                             some children that would have needed to 
-                                             go to a specially adapted school can 
-                                             attend a normal school on the same level 
-                                             as other children.</p>
-                    </div>
-                </div>
-                <div class="card" id = "card6">
-                    <a href="services/service_6.html"><img class="card-img-top" src="../assets/img/services/service_6.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <a href="services/service_6.html"><h5 class="card-title">Education</h5></a>
-                        <p class="card-text">Children and young adults that are 
-                                             not able to attend normal schools can 
-                                             utilize our services. Our teachers all
-                                             have education and experience in 
-                                             teaching children that have problems 
-                                             learning in the conventional school 
-                                             system.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        <div class = "container top-container" id = "card-container">
+
+        </div>
+        
+        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -151,6 +73,7 @@
         
         <!-- Custom jQuery -->
         <script src = "../assets/js/navbar.js"></script>
+        <script src = "../assets/js/service-script.js"></script>
         <script src="../assets/js/filter-services.js"></script>
             
     </body>

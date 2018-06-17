@@ -46,26 +46,31 @@
     },
     {
         "id": 9,
-        "service_id": 4,
-        "location_id": 1
+        "service_id": 3,
+        "location_id": 3
     },
     {
         "id": 10,
         "service_id": 4,
-        "location_id": 4
+        "location_id": 1
     },
     {
         "id": 11,
-        "service_id": 5,
-        "location_id": 1
+        "service_id": 4,
+        "location_id": 4
     },
     {
         "id": 12,
         "service_id": 5,
-        "location_id": 2
+        "location_id": 1
     },
     {
         "id": 13,
+        "service_id": 5,
+        "location_id": 2
+    },
+    {
+        "id": 14,
         "service_id": 5,
         "location_id": 5
     }
