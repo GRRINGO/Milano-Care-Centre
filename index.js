@@ -138,6 +138,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // /* Register REST entry point */
 
+// --- LOCATIONS ---
+
 app.get("/locations", function(req, res) {
     res.sendFile(__dirname + "/public/pages/location_index.html");
 });
@@ -183,6 +185,8 @@ app.get("/info/locations/:id", function(req, res) {
 
 });
 
+// --- PERSONS ---
+
 app.get("/persons", function(req, res) {
     res.sendFile(__dirname + "/public/pages/person_index.html");
 });
@@ -213,6 +217,8 @@ app.get("/info/persons/:id", function(req, res) {
     console.log("Tutto bene");
 
 });
+
+// --- OTHER ---
 
 
 app.get("/who_we_are", function(req, res) {
