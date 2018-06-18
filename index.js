@@ -361,10 +361,10 @@ app.get("/location_service_coupling", function(req, res) {
     console.log("Tutto bene");
 });
 
-// app.use(function(req, res) {
-//   res.status(400);
-//   res.send({ error: "400", title: "404: File Not Found" });
-// });
+ app.use(function(req, res) {
+   res.status(404);
+   res.sendFile(__dirname + "/public/pages/404_not_found.html");
+ });
 
 
 
