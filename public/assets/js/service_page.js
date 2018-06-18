@@ -26,7 +26,7 @@ function loadMainContent() {
                 $("#details-list").append("<li>" + detailsArray[i] + "</li>");
             }
         }
-        
+
     });
 }
 
@@ -51,9 +51,50 @@ function loadServiceLinks() {
     })
 }
 
+function loadTransitionalLinks() {
+    let curr_path = window.location.pathname;
+    let splitted = curr_path.split("/");
+    let pageID = splitted[2];
+
+    // Persons
+    fetch("/persons_related_to_service/" + pageID)
+        .then(function(response) {
+        return response.json();
+    })
+        .then(function(data) {
+
+        if (data.length === 0) {
+            $("#person-list").append("<p>No associated persons</p>");
+        }
+        else {
+            for (let i = 0; i < data.length; i++) {
+                $("#person-list").append("<a href = '/persons/" + data[i].id + "'><li class='list-group-item list-group-item-action'>" + data[i].first_name + " " + data[i].last_name + "</li></a>");
+            }
+        }
+    });
+    
+    //Locations
+     fetch("/locations_related_to_service/" + pageID)
+        .then(function(response) {
+        return response.json();
+    })
+        .then(function(data) {
+
+        if (data.length === 0) {
+            $("#location-list").append("<p>No associated locations</p>");
+        }
+        else {
+            for (let i = 0; i < data.length; i++) {
+                $("#location-list").append("<a href = '/locations/" + data[i].id + "'><li class='list-group-item list-group-item-action'>" + data[i].name + "</li></a>");
+            }
+        }
+    });
+}
+
 function startup() {
     loadMainContent();
     loadServiceLinks();
+    loadTransitionalLinks();
 }
 
 $(document).ready(function() {

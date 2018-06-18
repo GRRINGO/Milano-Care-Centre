@@ -48,8 +48,6 @@ function initDb() {
                 table.string("email");
                 table.text("desc");
                 table.string("img_url");
-                table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
-                table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
             })
                 .then(() => {
                 return Promise.all(
@@ -104,9 +102,6 @@ function initDb() {
                 table.string("fri_open");
                 table.string("sat_sun_open");
                 table.string("events");
-                table.string("service0").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
-                table.string("service1").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
-                table.string("service2").references("name").inTable("services").onUpdate("CASCADE").onDelete("SET NULL");
 
             })
                 .then(() => {
@@ -121,7 +116,7 @@ function initDb() {
             return true;
         }
     });
-    
+
     sqlDb.schema.hasTable("locationservice").then(exists => {
         if (!exists) {
             sqlDb.schema
@@ -142,6 +137,27 @@ function initDb() {
             return true;
         }
     });
+
+    sqlDb.schema.hasTable("personservice").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("personservice", table => {
+                table.increments("id");
+                table.integer("service_id").unsigned();
+                table.integer("person_id").unsigned();
+            })
+                .then(() => {
+                return Promise.all(
+                    _.map(personserviceList, ps => {
+                        delete ps.id;
+                        return sqlDb("personservice").insert(ps);
+                    })
+                );
+            });
+        } else {
+            return true;
+        }
+    });
 }
 
 const _ = require("lodash");
@@ -152,6 +168,7 @@ let personsList = require("./json/persondata.json");
 let locationsList = require("./json/locationdata.json");
 let servicesList = require("./json/servicedata.json");
 let locationserviceList = require("./json/locationservicedata.json");
+let personserviceList = require("./json/personservicedata.json");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -163,6 +180,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // /* Register REST entry point */
+
+// Not able to do join without this...
+const sqlite3 = require('sqlite3').verbose();
+let db = new sqlite3.Database("carecenterdb.sqlite");
+
+app.get("/heisann", function(req, res) {
+
+    db.all("SELECT name FROM locations", function (err, rows) {
+        rows.forEach(function(row) {
+            console.log(row.name);
+        });
+    });
+});
+
 
 // --- LOCATIONS ---
 
@@ -178,19 +209,6 @@ app.get("/location_card_info", function(req, res) {
     });
 
     console.log("Tutto bene");
-
-
-    /*
-    let sql = 'SELECT name, desc, img_url FROM locations';
-    sqlDb.all(sql, [], (err, rows) => {
-        if (err) {
-            console.log("Error occured");
-        }
-        else {
-            console.log(rows[2].name);
-        }
-    });
-    */
 });
 
 app.get("/location_names", function(req, res) {
@@ -218,6 +236,13 @@ app.get("/info/locations/:id", function(req, res) {
 
     console.log("Tutto bene");
 
+});
+
+app.get("/services_related_to_location/:id", function(req, res) {
+
+    db.all("SELECT s.name, s.id FROM services s JOIN locationservice ls ON s.id = ls.service_id WHERE ls.location_id = " + req.params.id, function (err, rows) {
+        res.send(rows);
+    });
 });
 
 // --- PERSONS ---
@@ -251,6 +276,13 @@ app.get("/info/persons/:id", function(req, res) {
 
     console.log("Tutto bene");
 
+});
+
+app.get("/services_related_to_person/:id", function(req, res) {
+
+    db.all("SELECT s.name, s.id FROM services s JOIN personservice ps ON s.id = ps.service_id WHERE ps.person_id = " + req.params.id, function (err, rows) {
+        res.send(rows);
+    });
 });
 
 // --- SERVICES ---
@@ -293,6 +325,20 @@ app.get("/info/services/:id", function(req, res) {
 
     console.log("Tutto bene");
 
+});
+
+app.get("/persons_related_to_service/:id", function(req, res) {
+
+    db.all("SELECT p.first_name, p.last_name, p.id FROM persons p JOIN personservice ps ON p.id = ps.person_id WHERE ps.service_id = " + req.params.id, function (err, rows) {
+        res.send(rows);
+    });
+});
+
+app.get("/locations_related_to_service/:id", function(req, res) {
+
+    db.all("SELECT l.name, l.id FROM locations l JOIN locationservice ls ON l.id = ls.location_id WHERE ls.service_id = " + req.params.id, function (err, rows) {
+        res.send(rows);
+    });
 });
 
 // --- OTHER ---

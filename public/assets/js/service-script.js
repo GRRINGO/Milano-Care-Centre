@@ -78,12 +78,11 @@ function addFiltering() { // Adding the buttons and the filtering effect itself
             }
 
             if (!generatedLocations.includes(locationID)) {
-                $("#filter-buttons").append("<button type='button' class='filter-btn btn btn-secondary' id = 'btnloc-" + (locationID + 1) + "'>" + allLocations[locationID] + "</button>");
+                $("#filter-buttons").append("<button type='button' class='filter-btn btn btn-secondary' id = 'btnloc-" + locationID + "'>" + allLocations[locationID - 1] + "</button>");
                 generatedLocations.push(locationID);
             }
         }
 
-        numServices = numServices + 1;
         let allServices = [];
         for (let i = 1; i <= numServices; i++) {
             allServices.push(i);
@@ -92,16 +91,14 @@ function addFiltering() { // Adding the buttons and the filtering effect itself
         $(".filter-btn").click(function() {
             let locID = parseInt(((this).id).split("-")[1]);
             let relatedServices = [];
-            
-            console.log(locID);
 
             if (locID === 0) { // "Show all"
                 relatedServices = allServices;
             }
             else {
                 for (let i = 0; i < data.length; i++) {
-                    if (locID === (data[i].location_id + 1)) {
-                        relatedServices.push(data[i].service_id + 1);
+                    if (locID === data[i].location_id) {
+                        relatedServices.push(data[i].service_id);
                     }
                 }
             }

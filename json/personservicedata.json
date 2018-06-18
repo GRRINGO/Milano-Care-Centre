@@ -1,37 +1,37 @@
 [
     {
         "id": 0,
-        "person_id": 1,
-        "service_id": 0
-    },
-    {
-        "id": 1,
-        "person_id": 1,
-        "service_id": 5
-    },
-    {
-        "id": 2,
-        "person_id": 3,
+        "person_id": 2,
         "service_id": 1
     },
     {
-        "id": 3,
-        "person_id": 4,
-        "service_id": 0
+        "id": 1,
+        "person_id": 2,
+        "service_id": 6
     },
     {
-        "id": 4,
+        "id": 2,
         "person_id": 4,
-        "service_id": 5
-    },
-    {
-        "id": 5,
-        "person_id": 5,
         "service_id": 2
     },
     {
-        "id": 6,
+        "id": 3,
         "person_id": 5,
+        "service_id": 1
+    },
+    {
+        "id": 4,
+        "person_id": 5,
+        "service_id": 6
+    },
+    {
+        "id": 5,
+        "person_id": 6,
         "service_id": 3
+    },
+    {
+        "id": 6,
+        "person_id": 6,
+        "service_id": 4
     }
 ]

@@ -1,10 +1,6 @@
 function loadMainContent() {
     let curr_path = window.location.pathname;
-    console.log(curr_path);
     let splitted = curr_path.split("/");
-    console.log(splitted[1]);
-
-
 
     fetch("/info" + curr_path, {
         headers: new Headers({
@@ -33,23 +29,15 @@ width="100%" height="381" frameborder="0" style="border:0" allowfullscreen></ifr
         $("#mon_thu").replaceWith(`<td id="mon_thu">`+data[0].mon_thu_open+`</td>`);
         $("#fri").replaceWith(`<td id="fri">`+data[0].fri_open+`</td>`);
         $("#sat_sun").replaceWith(`<td id="sat_sun">`+data[0].sat_sun_open+`</td>`);
-
-
-        //Creaeting the services links list porb should be done in seperate
-        //function which makes a query with the assosiated services names to
-        //obtain the address/id. Not sure because services is not yet implemented.
-        text = `<ul id="services_provided" class="list-group">`;
-        if (data[0].service0 != "NULL"){
-            text = text +  `<a href = "../services/service_1.html"><li class="list-group-item list-group-item-action">`+data[0].service0+`</li></a>`;
-        };
-        if (data[0].service1 != "NULL"){
-            text = text +  `<a href = "../services/service_2.html"><li class="list-group-item list-group-item-action">`+data[0].service1+`</li></a>`;
-        };
-        if (data[0].service2 != "NULL"){
-            text = text +  `<a href = "../services/service_3.html"><li class="list-group-item list-group-item-action">`+data[0].service2+`</li></a>`;
-        };
-        text = text + `</ul>`;
-        $("#services_provided").replaceWith(text);
+        
+        
+        // As the event to location relation is one to many, event names are simply stored as a column in the location schema.
+        eventString = data[0].events;
+        eventArray = eventString.split("/");
+        
+        for (let i = 0; i < eventArray.length; i++) {
+            $("#event-list").append("<a href = '#'><li class='list-group-item list-group-item-action'>" + eventArray[i] + "</li></a>");
+        }
     });
 }
 
@@ -72,12 +60,30 @@ function loadLocationLinks() {
 
         $("#locations_links_list").replaceWith(text);
     })
+}
 
+function loadTransitionalLinks() {
+    let curr_path = window.location.pathname;
+    let splitted = curr_path.split("/");
+    let pageID = splitted[2];
+    
+    fetch("/services_related_to_location/" + pageID)
+        .then(function(response) {
+        return response.json();
+    })
+        .then(function(data) {
+        
+        for (let i = 0; i < data.length; i++) {
+            $("#services_provided").append("<a href = '/services/" + data[i].id + ".html'><li class='list-group-item list-group-item-action'>" + data[i].name + "</li></a>");
+        }
+        
+    });
 }
 
 function startup() {
     loadMainContent();
     loadLocationLinks();
+    loadTransitionalLinks();
 }
 
 $(document).ready(function() {
