@@ -5,7 +5,7 @@
   "repository": "https://polimi-hyp-2018-10643774@bitbucket.org/polimihyp2018team10643774/polimi-hyp-2018-project.git",
   "author": "Noah Nettey",
   "engines": {
-    "node": ">=8.0.0"
+    "node": "8.11.2"
   },
   "license": "MIT",
   "dependencies": {
