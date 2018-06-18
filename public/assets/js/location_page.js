@@ -74,7 +74,7 @@ function loadTransitionalLinks() {
         .then(function(data) {
         
         for (let i = 0; i < data.length; i++) {
-            $("#services_provided").append("<a href = '/services/" + data[i].id + ".html'><li class='list-group-item list-group-item-action'>" + data[i].name + "</li></a>");
+            $("#services_provided").append("<a href = '/services/" + data[i].id + "'><li class='list-group-item list-group-item-action'>" + data[i].name + "</li></a>");
         }
         
     });
