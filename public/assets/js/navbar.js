@@ -12,12 +12,10 @@ function selectActive() {
     }  
 
     let selector_ = "a[href*=" + actual_location+"]";
-    console.log(splitted);
     $(selector_).addClass("active");
     if (actual_location == "locations" || actual_location == "locations" ||
     actual_location == "locations" || actual_location == "who_we_are" ||
     actual_location == "events") {
-        console.log("true")
         $("#navbarDropdown").addClass("active");
     }
 }
