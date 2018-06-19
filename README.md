@@ -19,12 +19,14 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 **Division of work:**
 
 - The design for the web page was done together in meetings, before we started to actually produce code.
-*** Front-end ***
+- *** Front-end ***
 - Noah worked on the frontpage, navbar, contact us and setup of BitBucket and Heroku.
 - Kristoffer focused on services, locations and persons, including navigation within and between these.
-*** Back-end ***
+- *** Back-end ***
 - Kristoffer experimented with how to dynamically populate index pages and the sub-pages.
-- 
+- Noah structurized Kristoffers work and created the pages for locations and persons.
+- Kristoffer created the pages for services and added dynamically loaded transitional links to services, locations and persons.
+- Noah finalized the project and deployed it at Heroku.
 
 
 **Client-side languages used:** 
@@ -32,6 +34,9 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 - HTML
 - JavaScript (with the use of jQuery)        
 - CSS (including Bootstrap)
+
+**Server-side languages used:** 
+- JavaScript (controlling NodeJS)
 
 **Tenplate used:** No templates were used, but the site relies heavily on Bootstrap and its various components (navbar, cards and more).
 
@@ -41,6 +46,7 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 ## Main problems faced during development
 
+**Front-end:**
 No major technical issues were faced during development. Time consuming activities were mainly due to change of
 layout on pages. Take the backdrop-dark css-class as an example. To introduce more contrasts to the visuals, we
 wrapped some of the content in a div of class backdrop-dark. Doing this for a single person is ok, but when this
@@ -49,6 +55,8 @@ that it is best to be satisfied with the apperance before introducing many pages
 to technical issues, we had some small problems with the script making the heart at "Who We Are" beat. It proved
 that the min-version of jQuery did not support animation of CSS properties and the full version had to be loaded
 for this page.
+
+**Back-end:**
 
 ## Notes
 Before this repository was made GitHub was used for version control.
