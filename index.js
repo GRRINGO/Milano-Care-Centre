@@ -9,7 +9,7 @@ let sqlDb;
 function initSqlDB() {
     // Locally we should launch the app with TEST=true to use SQLlite:
 
-    process.env.TEST=false// node ./index.js
+    //process.env.TEST=false// node ./index.js
 
 
     if (false) {
