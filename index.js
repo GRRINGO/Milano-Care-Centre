@@ -217,7 +217,7 @@ app.get("/info/locations/:id", function(req, res) {
             res.send(result);
         });
     } else {
-        res.sendFile(__dirname + "/public/pages/location_page.html")
+        res.sendFile(__dirname + "/public/pages/404_not_found.html")
     }
 });
 
@@ -259,7 +259,7 @@ app.get("/info/persons/:id", function(req, res) {
             res.send(result);
         });
     } else {
-        res.sendFile(__dirname + "/public/pages/person_page.html")
+        res.sendFile(__dirname + "/public/pages/404_not_found.html")
     }
 });
 
@@ -309,7 +309,7 @@ app.get("/info/services/:id", function(req, res) {
             res.send(result);
         });
     } else {
-        res.sendFile(__dirname + "/public/pages/service_page.html")
+        res.sendFile(__dirname + "/public/pages/404_not_found.html")
     }
 });
 
