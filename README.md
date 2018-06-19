@@ -50,6 +50,10 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 - The embedded google maps, _https://developers.google.com/maps/documentation/embed/guide_
 
+## Description of the REST API
+
+/locations (sending in the template of the location index).
+
 ## Main problems faced during development
 
 **Front-end:**
