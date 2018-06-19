@@ -54,25 +54,32 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 All of the requests are of type GET
 
-/locations (Sending in the template of the location index.)
-/location_card_info (Retrieving name, description and image URL of all locations. Just the information that is needed for the index page.)
-/location_names (Retrieving only the names of all locations.)
-/locations/:id (Sending in the template of a location page.)
-/info/locations/:id (Retrieving all information stored in the database related to the location with the corresponding id.)
-/services_related_to_location/:id (Retrieving name and id of all services related to the location with the corresponding id. Used for transitional links.)
+- /locations (Sending in the template of the location index.)
+- /location_card_info (Retrieving name, description and image URL of all locations. Just the information that is needed for the index page.)
+- /location_names (Retrieving only the names of all locations.)
+- /locations/:id (Sending in the template of a location page.)
+- /info/locations/:id (Retrieving all information stored in the database related to the location with the corresponding id.)
+- /services_related_to_location/:id (Retrieving name and id of all services related to the location with the corresponding id. Used for transitional links.)
 
-/persons (Sending in the template of the person index.)
-/person_card_info (Retrieving name, description and image URL of all persons. Just the information that is needed for the index page.)
-/locations/:id (Sending in the template of a person page.)
-/info/locations/:id (Retrieving all information stored in the database related to the person with the corresponding id.)
-/services_related_to_person/:id (Retrieving name and id of all services related to the person with the corresponding id. Used for transitional links.)
+- /persons (Sending in the template of the person index.)
+- /person_card_info (Retrieving name, description and image URL of all persons. Just the information that is needed for the index page.)
+- /persons/:id (Sending in the template of a person page.)
+- /info/persons/:id (Retrieving all information stored in the database related to the person with the corresponding id.)
+- /services_related_to_person/:id (Retrieving name and id of all services related to the person with the corresponding id. Used for transitional links.)
 
-/locations (Sending in the template of the location index.)
-/location_card_info (Retrieving name, description and image URL of all locations. Just the information that is needed for the index page.)
-/location_names (Retrieving only the names of all locations.)
-/locations/:id (Sending in the template of a location page.)
-/info/locations/:id (Retrieving all information stored in the database related to the location with the corresponding id.)
-/services_related_to_location/:id (Retrieving name and id of all services related to the location with the corresponding id. Used for transitional links.)
+- /services (Sending in the template of the service index.)
+- /service_card_info (Retrieving name, description and image URL of all services. Just the information that is needed for the index page.)
+- /service_names (Retrieving only the names of all services.)
+- /services/:id (Sending in the template of a service page.)
+- /info/services/:id (Retrieving name, description and details related to the service with the corresponding id. Only what is needed.)
+- /persons_related_to_service/:id (Retrieving name and id of all persons related to the service with the corresponding id. Used for transitional links.)
+- /locations_related_to_service/:id (Retrieving name and id of all locations related to the service with the corresponding id. Used for transitional links.)
+
+- / (Sending in the static frontpage.)
+- /who_we_are (Sending in a static html-file.)
+- /contact_us (Sending in a static html-file.)
+- /location_service_coupling (Retrieving all the connections between locations and services. Used for the filtering of services at the service index page.)
+
 
 ## Main problems faced during development
 
