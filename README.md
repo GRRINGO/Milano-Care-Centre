@@ -52,7 +52,27 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 ## Description of the REST API
 
-/locations (sending in the template of the location index).
+All of the requests are of type GET
+
+/locations (Sending in the template of the location index.)
+/location_card_info (Retrieving name, description and image URL of all locations. Just the information that is needed for the index page.)
+/location_names (Retrieving only the names of all locations.)
+/locations/:id (Sending in the template of a location page.)
+/info/locations/:id (Retrieving all information stored in the database related to the location with the corresponding id.)
+/services_related_to_location/:id (Retrieving name and id of all services related to the location with the corresponding id. Used for transitional links.)
+
+/persons (Sending in the template of the person index.)
+/person_card_info (Retrieving name, description and image URL of all persons. Just the information that is needed for the index page.)
+/locations/:id (Sending in the template of a person page.)
+/info/locations/:id (Retrieving all information stored in the database related to the person with the corresponding id.)
+/services_related_to_person/:id (Retrieving name and id of all services related to the person with the corresponding id. Used for transitional links.)
+
+/locations (Sending in the template of the location index.)
+/location_card_info (Retrieving name, description and image URL of all locations. Just the information that is needed for the index page.)
+/location_names (Retrieving only the names of all locations.)
+/locations/:id (Sending in the template of a location page.)
+/info/locations/:id (Retrieving all information stored in the database related to the location with the corresponding id.)
+/services_related_to_location/:id (Retrieving name and id of all services related to the location with the corresponding id. Used for transitional links.)
 
 ## Main problems faced during development
 
@@ -74,7 +94,8 @@ we found out that the pages could not be rendered server-side, we had to abort t
 "template" html-file to the browser that then uses JavaScript to populate the "template" with content utilizing AJAX calls. The main problems were
 faced server-side as it took some time to decide what info that had to be included in the database, how to structurize it and to get the queries
 correct. A typical problem was that the transitional links from (for example) a person to a service did not point to the services that we wanted.
-This had to do with confusion between starting indexing on 0 or 1.
+This had to do with confusion between starting indexing on 0 or 1. Futhermore, we had some problems when deploying the application as some of the
+strings we wanted to load into the database were longer than 255 characters.
 
 ## Notes
 Before this repository was made GitHub was used for version control.
