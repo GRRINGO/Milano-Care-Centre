@@ -21,12 +21,12 @@ The project is hosted on Heroku: _https://polimi-hyp-2018-team-10643774.herokuap
 
 - The design for the web page was done together in meetings, before we started to actually produce code.
 
-*** Front-end ***
+Front-end
 
 - Noah worked on the frontpage, navbar, contact us and setup of BitBucket and Heroku.
 - Kristoffer focused on services, locations and persons, including navigation within and between these.
 
-*** Back-end ***
+Back-end
 
 - Kristoffer experimented with how to dynamically populate index pages and the sub-pages.
 - Noah structurized Kristoffers work and created the pages for locations and persons.
