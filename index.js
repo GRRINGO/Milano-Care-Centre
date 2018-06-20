@@ -190,7 +190,7 @@ app.get("/locations", function(req, res) {
     res.sendFile(__dirname + "/public/pages/location_index.html");
 });
 
-app.get("/info/location_card_info", function(req, res) {
+app.get("/location_card_info", function(req, res) {
     let myQuery = sqlDb("locations");
 
     myQuery.select(["name", "desc", "img_url"]).then(result => {
@@ -198,7 +198,7 @@ app.get("/info/location_card_info", function(req, res) {
     });
 });
 
-app.get("/info/location_names", function(req, res) {
+app.get("/location_names", function(req, res) {
     let myQuery = sqlDb("locations");
 
     myQuery.select(["name"]).then(result => {
@@ -221,7 +221,7 @@ app.get("/info/locations/:id", function(req, res) {
     }
 });
 
-app.get("/info/location/:id/service", function(req, res) {
+app.get("/services_related_to_location/:id", function(req, res) {
 
     sqlDb("services")
     .join("locationservice", "services.id", "=", "locationservice.service_id")
@@ -240,7 +240,7 @@ app.get("/persons", function(req, res) {
     res.sendFile(__dirname + "/public/pages/person_index.html");
 });
 
-app.get("/info/person_card_info", function(req, res) {
+app.get("/person_card_info", function(req, res) {
     let myQuery = sqlDb("persons");
 
     myQuery.select(["first_name", "last_name", "desc", "img_url"]).then(result => {
@@ -263,7 +263,7 @@ app.get("/info/persons/:id", function(req, res) {
     }
 });
 
-app.get("/info/person/:id/service", function(req, res) {
+app.get("/services_related_to_person/:id", function(req, res) {
     
     sqlDb("services")
     .join("personservice", "services.id", "=", "personservice.service_id")
@@ -282,7 +282,7 @@ app.get("/services", function(req, res) {
     res.sendFile(__dirname + "/public/pages/service_index.html");
 });
 
-app.get("/info/service_card_info", function(req, res) {
+app.get("/service_card_info", function(req, res) {
     let myQuery = sqlDb("services");
 
     myQuery.select(["name", "desc", "img_url"]).then(result => {
@@ -290,7 +290,7 @@ app.get("/info/service_card_info", function(req, res) {
     });
 });
 
-app.get("/info/service_names", function(req, res) {
+app.get("/service_names", function(req, res) {
     let myQuery = sqlDb("services");
 
     myQuery.select(["name", "desc"]).then(result => { // For some reason the result is ordered alphabetically if just the name is selected
@@ -313,7 +313,7 @@ app.get("/info/services/:id", function(req, res) {
     }
 });
 
-app.get("/info/service/:id/person", function(req, res) {
+app.get("/persons_related_to_service/:id", function(req, res) {
     
     sqlDb("persons")
     .join("personservice", "persons.id", "=", "personservice.person_id")
@@ -326,7 +326,7 @@ app.get("/info/service/:id/person", function(req, res) {
     })
 });
 
-app.get("/info/service/:id/location", function(req, res) {
+app.get("/locations_related_to_service/:id", function(req, res) {
     
     sqlDb("locations")
     .join("locationservice", "locations.id", "=", "locationservice.location_id")
@@ -350,7 +350,7 @@ app.get("/contact_us", function(req, res) {
     res.sendFile(__dirname + "/public/pages/contact_us.html")
 });
 
-app.get("/info/location_service_coupling", function(req, res) {
+app.get("/location_service_coupling", function(req, res) {
     let myQuery = sqlDb("locationservice");
 
     myQuery.select(["service_id", "location_id"]).then(result => {

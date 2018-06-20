@@ -1,5 +1,5 @@
 function generateCards() {
-    fetch('/info//location_card_info')
+    fetch('/location_card_info')
         .then(function(response) {
         return response.json();
     })

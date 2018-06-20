@@ -43,7 +43,7 @@ width="100%" height="381" frameborder="0" style="border:0" allowfullscreen></ifr
 
 function loadLocationLinks() {
     let curr_path = window.location.pathname;
-    fetch("/info/location_names")
+    fetch("/location_names")
         .then(function(response) {
         return response.json();
     })
@@ -67,7 +67,7 @@ function loadTransitionalLinks() {
     let splitted = curr_path.split("/");
     let pageID = splitted[2];
     
-    fetch("/info/location/" + pageID + "/service")
+    fetch("/services_related_to_location/" + pageID)
         .then(function(response) {
         return response.json();
     })
