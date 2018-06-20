@@ -39,7 +39,7 @@ function loadTransitionalLinks() {
     let splitted = curr_path.split("/");
     let pageID = splitted[2];
 
-    fetch("/services_related_to_person/" + pageID)
+    fetch("/info/person/" + pageID + "/service")
         .then(function(response) {
         return response.json();
     })

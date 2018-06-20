@@ -32,7 +32,7 @@ function loadMainContent() {
 
 function loadServiceLinks() {
     let curr_path = window.location.pathname;
-    fetch("/service_names")
+    fetch("/info/service_names")
         .then(function(response) {
         return response.json();
     })
@@ -57,7 +57,7 @@ function loadTransitionalLinks() {
     let pageID = splitted[2];
 
     // Persons
-    fetch("/persons_related_to_service/" + pageID)
+    fetch("/info/service/" + pageID + "/person")
         .then(function(response) {
         return response.json();
     })
@@ -74,7 +74,7 @@ function loadTransitionalLinks() {
     });
     
     //Locations
-     fetch("/locations_related_to_service/" + pageID)
+     fetch("/info/service/" + pageID + "/location")
         .then(function(response) {
         return response.json();
     })

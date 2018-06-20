@@ -1,5 +1,5 @@
 function generateCards() {
-    fetch('/service_card_info')
+    fetch('/info/service_card_info')
         .then(function(response) {
         return response.json();
     })
@@ -46,7 +46,7 @@ function filterCards(idArray) { // A list of integers as input.
 function addFiltering() { // Adding the buttons and the filtering effect itself
     let allLocations = [];
     
-    fetch('/location_names')
+    fetch('/info/location_names')
         .then(function(response) {
         return response.json();
     })
@@ -59,7 +59,7 @@ function addFiltering() { // Adding the buttons and the filtering effect itself
         }
     })
 
-    fetch('/location_service_coupling')
+    fetch('/info/location_service_coupling')
         .then(function(response) {
         return response.json();
     })
