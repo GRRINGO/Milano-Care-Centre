@@ -12,7 +12,7 @@ function initSqlDB() {
     //process.env.TEST=false// node ./index.js
 
 
-    if (true) {
+    if (false) {
         sqlDb = sqlDbFactory({
             client: "sqlite3",
             debug: true,
